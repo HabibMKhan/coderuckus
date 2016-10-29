@@ -1,0 +1,12 @@
+.navbar.navbar-fixed-top {
+
+  background-color: $brand-color;
+  height: $header-height;
+
+  .navbar-headline {
+    color: white;
+    font-size: 30px;
+    line-height: $header-height;
+    text-align: center;
+  }
+}

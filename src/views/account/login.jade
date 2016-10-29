@@ -1,0 +1,19 @@
+.container.account-form
+    form(name="form", novalidate)
+        .input-row
+            input.form-control.input-field(type="email", required, placeholder="Email", onfocus="this.placeholder = ''", ng-model="credentials.email", name="uEmail")
+            div(ng-show="form.$submitted || form.uEmail.$touched")
+                .validation-error(ng-show="form.uEmail.$error.required") Please enter an email address
+                .validation-error(ng-show="form.uEmail.$error.email") Invalid email address
+        .input-row
+            input.form-control.input-field(type="password" placeholder="Password" onfocus="this.placeholder = ''" ng-model="credentials.password", name="uPassword", required, ng-minlength="6" )
+            div(ng-show="form.$submitted || form.uPassword.$touched")
+                .validation-error(ng-show="form.uPassword.$error.required") Please enter a password
+                .validation-error(ng-show="form.uPassword.$error.minlength") Please use 6 or more characters
+
+        .input-row
+            button.btn.btn-primary.btn-block(ng-click="submit(form)") LOGIN
+
+        .input-row.pull-right
+            p.login-help
+                a(ui-sref="register") Create an account

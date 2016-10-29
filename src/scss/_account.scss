@@ -1,0 +1,19 @@
+.account-form{
+  top: 100px;
+  position: relative;
+  width: 400px;
+  text-align: center;
+
+  .input-row{
+    padding: 5px 0;
+  }
+  .input-field{
+    font-size: 15px;
+    height: $input-height;
+    padding: 10px;
+    width: 100%;
+    background-color: $input-background-color;
+    border:none;
+  }
+
+}

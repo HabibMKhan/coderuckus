@@ -1,0 +1,87 @@
+@import '../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../bower_components/font-awesome/scss/font-awesome';
+@import "variables";
+
+@import "account";
+@import "error";
+@import "navbar";
+@import "utilities";
+
+html *
+{
+  border-radius: 0 !important;
+  font-family: 'Slabo 27px', serif;
+}
+
+#main {
+  margin-top: 180px;
+}
+
+#charPage {
+  margin-top: 180px;
+}
+
+.block
+{
+  float: left;
+  margin-right: 10px;
+  position: relative;
+  display: block;
+  min-width: 100px;
+  min-height: 100px;
+  background-color: #14ab1b;
+}
+
+#narrative {
+  font-size: 28px;
+  clear: both;
+  float: right;
+  margin-top: 10px;
+  margin-right: 40%;
+  border: 1px solid black;
+  padding: 50px;
+}
+
+#story {
+  height: 60px;
+  width: auto;
+  font-size: 24px;
+  background-color: #2448bb;
+  color: white;
+  clear: both;
+  cursor: pointer;
+  float: right;
+  margin-right: 40%;
+  margin-top: 20px;
+  padding: 5px 15px;
+}
+
+#witch {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  right: 0;
+  top: 440px;
+}
+
+#chooseChar {
+  height: 60px;
+  width: auto;
+  font-size: 24px;
+  background-color: #14ab1b;
+  color: white;
+  clear: both;
+  cursor: pointer;
+  float: right;
+  margin-right: 40%;
+  margin-top: 20px;
+  padding: 5px 15px;
+}
+
+#archer {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  right: 0;
+  top: 440px;
+}
