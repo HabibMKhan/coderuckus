@@ -1,0 +1,78 @@
+div(id="main" class="edit-page" ng-controller="editController")
+   div(id="edit-title") {{editTitle}}
+   div(id="stat-edit" ng-show="toggle==='Edit Moves'")
+     div(class="stat-edit__stat-types")
+       div(class="stat-edit__stat-type") STRENGTH: {{strength}}
+       div(class="stat-edit__stat-type") SPEED: {{speed}}
+       div(class="stat-edit__stat-type") MAXSTAT {{maxstat}}
+       div(class="stat-edit__stat-type--tip") Spend STRENGTH and SPEED points, but don't exceed MAXSTAT.
+     
+     div(class="stat-edit__stat-label") Toughness:
+     div(class="stat-edit__stat--javascript") let sessionStorage.toughness = 
+     input(class="stat-edit__stat-input" ng-change="toughnessAdjust()" min="0" ng-max="maxstat" type="number" ng-model="toughness" placeholder="e.g., 1, 2, 3")
+     div(class="stat-edit__move-invalid" ng-if="toughness === undefined") Error: Toughness greater than max.
+
+     div(class="stat-edit__stat-label") Power:
+     div(class="stat-edit__stat--javascript") let sessionStorage.power = 
+     input(class="stat-edit__stat-input" ng-change="powerAdjust()" min="0" ng-max="maxstat" type="number" ng-model="power" placeholder="e.g., 1, 2, 3")
+     div(class="stat-edit__move-invalid" ng-if="power === undefined") Error: Power greater than max.
+
+     div(class="stat-edit__stat-label") Evasion:
+     div(class="stat-edit__stat--javascript") let sessionStorage.evasion = 
+     input(class="stat-edit__stat-input" ng-change="evasionAdjust()" min="0" ng-max="maxstat" type="number" ng-model="evasion" placeholder="e.g., 1, 2, 3")
+     div(class="stat-edit__move-invalid" ng-if="evasion === undefined") Error: Evasion greater than max.
+
+     div(class="stat-edit__stat-label") Accuracy:
+     div(class="stat-edit__stat--javascript") let sessionStorage.accuracy = 
+     input(class="stat-edit__stat-input" ng-change="accuracyAdjust()" min="0" ng-max="maxstat" type="number" ng-model="accuracy" placeholder="e.g., 1, 2, 3")
+     div(class="stat-edit__move-invalid" ng-if="accuracy === undefined") Error: Accuracy greater than max.
+     
+   div(id="move-edit" ng-show="toggle==='Edit Stats'")
+    div(class="move-edit__available__title") 
+      span(ng-if="abilityCount > 0") Choose {{abilityCount}} ability. 
+      span() {{moveCount}} abilities currently selected. 
+      span(class="default-move__text") Default Fixed (2): (Throw Rock & Sand)
+    div(class="move-edit__moves--available")
+      div(class="move-edit__move" ng-class="(moves[chartype][$index].name === ability) ? 'selected' : 'unselected'" ng-click="selectMove($index)" ng-repeat="move in moves[chartype]") {{move.name}}
+        div(class="move-edit__move-damage") DAMAGE: {{move.damage}}
+        div(class="move-edit__move-stat" ng-show="move.toughness>0") Toughness: +{{move.toughness}}
+        div(class="move-edit__move-stat" ng-show="move.power>0") Power: +{{move.power}}
+        div(class="move-edit__move-stat" ng-show="move.evasion>0") Evasion: +{{move.evasion}}
+        div(class="move-edit__move-stat" ng-show="move.accuracy>0") Accuracy: +{{move.accuracy}}
+        div(class="selectMove" ng-show="(moves[chartype][$index].name !== ability)") Click to Select this Move
+      div(class="move-edit__move--default" ng-repeat="move in moves['allChars']") {{move.name}}
+        div(class="move-edit__move-damage") DAMAGE: {{move.damage}}
+        div(class="move-edit__move-stat" ng-show="move.toughness>0") Toughness: +{{move.toughness}}
+        div(class="move-edit__move-stat" ng-show="move.power>0") Power: +{{move.power}}
+        div(class="move-edit__move-stat" ng-show="move.evasion>0") Evasion: +{{move.evasion}}
+        div(class="move-edit__move-stat" ng-show="move.accuracy>0") Accuracy: +{{move.accuracy}}
+   
+   div(class="toggle-edit")
+    button(class="toggle-edit__button" ng-click="toggleEdit()") {{toggle}}
+   div(class="go-village" ng-show="editCompleted")
+    button(class="btn-village" ng-click="setStats()" ui-sref="village") Go protect the village!
+    
+   div(id="stat-summary" class="stat-summary")
+    div(class="stat-summary__name-label") Name:
+    div(class="stat-summary__name-value stat--javascript") >> {{userName}}
+    div(class="stat-summary__type-label") Class:
+    div(class="stat-summary__type-value stat--javascript") >> {{chartype}}
+    div(class="stat-summary__type-label") Subclass:
+    div(class="stat-summary__type-value stat--javascript") >> {{subtype}}
+    div(class="stat-summary__stat__heading") Stats
+    div(class="stat-summary__name-label") Toughness:
+    div(class="stat-summary__name-value stat--javascript") >> {{toughness}}
+    div(class="stat-summary__type-label") Power:
+    div(class="stat-summary__type-value stat--javascript") >> {{power}}
+    div(class="stat-summary__type-label") Evasion:
+    div(class="stat-summary__type-value stat--javascript") >> {{evasion}}
+    div(class="stat-summary__type-label") Accuracy:
+    div(class="stat-summary__type-value stat--javascript") >> {{accuracy}}
+    div(class="stat-summary__type-label") Abilities:
+    div(class="stat-summary__type-value stat--javascript" ng-repeat="move in charMoves") >> {{move.name}}
+    
+    button(class="back-char" class="btn" ui-sref="char") 
+     a(ui-sref="char") Back to Character selection
+    button(class="back-home" class="btn" style="margin-top:150px;" ui-sref="home") 
+     a(ui-sref="home") Back home
+    img(class="char" ng-src="{{imgUrl}}")

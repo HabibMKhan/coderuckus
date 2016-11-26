@@ -1,0 +1,28 @@
+div(id="main" ng-controller="charController")
+  div(class="enemy--name") {{enemyName}}
+  img(class="char enemy enemy--battle" ng-src="{{eImgUrl}}")
+  img(class="char char--battle" ng-src="{{imgUrl}}")
+  
+  div(class="hp-bar__char")
+    progress(class="hp-bar hp-bar__char" value="{{charHp}}" max="{{charMax}}")
+    span(class="hp-description") Character HP: {{charHp}} Character MAX: {{charMax}}
+  div(class="hp-bar__enemy")
+    progress(class="hp-bar hp-bar__enemy" value="{{enemyHp}}" max="{{enemyMax}}")
+    span(class="hp-description") Character HP: {{enemyHp}} Character MAX: {{enemyMax}}
+    
+  div(class="hit-text" ng-show="hit && !battleStart") Your attack landed! {{damageDealt}} damage dealt!
+  div(class="hit-text" ng-show="!hit && !battleStart") Your attack missed!
+  div(class="enemyHit-text" ng-show="enemyHit && !battleStart") Enemy attack landed! {{damageTaken}} damage taken!
+  div(class="enemyHit-text" ng-show="!enemyHit && !battleStart") Enemy attack missed!
+  
+  div(class="battle__outcome" ui-sref="village" ng-show="((battleOutcome === 'Win') || (battleOutcome === 'Lose'))") {{battleOutcome}}
+    div(class="return-village") Click to return to village!
+  
+  a(id="surveyLink" href="https://goo.gl/forms/8w7s73XuloytxelI3" target="_blank") Survey after you're done playing :)
+  button(class="back-char" class="btn" ui-sref="char") 
+   a(ui-sref="char") Back to Character selection
+  button(class="back-home" class="btn" style="margin-top:150px;" ui-sref="home") 
+   a(ui-sref="home") Back home
+
+  div(id="battleMoves" ng-hide="((battleOutcome === 'Win') || (battleOutcome === 'Lose'))")
+    div(class="battleMoves__ability" ng-click="abilityUsed($index)" ng-repeat="move in charAbilities") {{move.name}}

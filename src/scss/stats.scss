@@ -1,0 +1,94 @@
+.name__label {
+  font-size: $regular-text-l;
+}
+
+.name__input {
+  font-size: $regular-text-l;
+  padding: 3px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.type__label {
+  font-size: $regular-text-l;
+}
+
+.type__text {
+  font-size: $regular-text-l;
+}
+
+.stats__backchar {
+
+}
+
+.back-char, .back-home {
+  height: 60px;
+  font-size: 28px;
+  background-color: #14ab1b;
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  width: 45%;
+  margin-left: 3.3333%;
+  a, a:visited {
+    color: white
+  }
+}
+.back-home {
+  bottom: 0;
+}
+
+.back-char {
+  bottom: 0px;
+  margin-left: 51.66%;
+}
+
+.go-home {
+  bottom: 140px;
+}
+
+.stat-summary {
+  position: fixed;
+  top: 140px;
+  width: 30%;
+  right: 0px;
+}
+
+.subclass__btn, .go-edit{
+  color: white;
+  height: 60px;
+  padding: 15px;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.subclass__btn {
+  background-color: $cr-teal;
+}
+.go-edit {
+  margin-top: 50px;
+  background-color: $cr-blue;
+  & a {
+    color: white;
+  }
+}
+
+.name__label--javascript, .type__label--javascript {
+  display: inline-block;
+  font-family: Consolas,monaco,monospace;
+  color: $cr-blue;
+}
+
+#type__text {
+  display: inline-block;
+}
+
+#instruction {
+  width: 60%;
+}

@@ -1,0 +1,25 @@
+div(id="main" class="statsPage" ng-controller="statsController")
+   div(id="instruction") Sections of this game may have JavaScript (JS) to show configurability! Hope you can learn some JS :)
+   div(class="name__label") Enter your character's name:
+   div(class="name__label--javascript") let name = 
+   input(class="name__input" type="text" ng-model="charName" placeholder="Character Name" maxlength="20")
+   div(class="type__label") Your character's type (chosen in Character Select):
+   div(class="type__label--javascript") let type = 
+   div(id="type__text") {{ chartype }}
+   div(id="subclass-selection")
+    button(class="subclass__btn" ng-repeat="class in classes" ng-click="setSubclass($index)" ){{class}}
+   div(id="stat-summary" class="stat-summary")
+    div(class="stat-summary__name-label") Name:
+    div(class="stat-summary__name-value stat--javascript") >> {{charName}}
+    div(class="stat-summary__type-label") Class:
+    div(class="stat-summary__type-value stat--javascript") >> {{chartype}}
+    div(class="stat-summary__type-label") Subclass:
+    div(class="stat-summary__type-value stat--javascript") >> {{subclass}}
+    img(class="char" ng-src="{{imgUrl}}")
+
+   button(class="back-char" class="btn" ui-sref="char") 
+    a(ui-sref="char") Back to Character selection
+   button(class="back-home" class="btn" style="margin-top:150px;" ui-sref="home") 
+    a(ui-sref="home") Back home
+   button(class="go-edit" class="btn" ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})" ng-show="subclass !== 'defaultSubclass'") 
+    a(ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})") Go Edit

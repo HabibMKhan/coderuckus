@@ -1,0 +1,112 @@
+.char.char--battle, .enemy.enemy--battle {
+  margin: 20px;
+  height: 40%;
+  margin-top: 20%;
+  position: fixed;
+  top: 0;
+  width: 21%;
+}
+
+.enemy.enemy--battle {
+  right: 0;
+  width: 30%;
+}
+
+.char.char--battle {
+  left: 0;
+}
+
+.hit-text, .enemyHit-text {
+  position: fixed;
+  bottom: 400px;
+  left: 40%;
+  font-size: 18px;
+  color: $cr-blue;
+  font-family: Consolas,monaco,monospace;
+}
+.enemyHit-text {
+  bottom: 340px;
+}
+
+#battleMoves {
+  position: fixed;
+  bottom: 120px;
+  width: 100%;
+  left: 0;
+  margin-left: 15%;
+}
+
+.battleMoves__ability {
+  display: inline-block;
+  height: 70px;
+  width: 20%;
+  margin-right: 5%;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background-color: $cr-teal;
+  cursor: pointer;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 250px;
+  height: 20px;
+}
+
+.hp-bar__enemy {
+  position: fixed;
+  margin-top: -50px;
+  right: 150px;
+}
+
+.hp-bar__char {
+  position: fixed;
+  margin-top: -50px;
+}
+
+.hp-bar__enemy progress[value]::-webkit-progress-value {
+    background-color: $cr-red;
+    border-radius: 2px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.hp-bar__char progress[value]::-webkit-progress-value {
+    background-color: $cr-green;
+}
+progress[value]::-webkit-progress-value::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  border-radius: 100%;
+  right: 7px;
+  top: 7px;
+  background-color: white;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #ccc;
+}
+
+.battle__outcome {
+  width: 40%;
+  left: 30%;
+  position: fixed;
+  bottom: 200px;
+  height: 100px;
+  padding: 6px;
+  background-color: orange;
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.return-village {
+  font-size: 24px;
+}

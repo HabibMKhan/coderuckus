@@ -1,7 +1,6 @@
 div(id="main" ng-controller="homeController")
-   div(id="narrative") {{ nextNarrative }}
+   div(id="footer") {{ nextNarrative }}
    button(id="story" class="btn" ng-click="storyClick()") {{nextText}}
-   img(id="witch" src="../../img/characters/witch.svg")
-   button(id="chooseChar" class="btn" ng-if="chooseChar") 
-    a(href="#/char") Choose a character!
-    a(ui-sref="char") Charchar
+   img(id="witch" src="../../img/characters/angel_normal.svg")
+   button(id="chooseChar" class="btn" ng-if="chooseChar" ui-sref="char") 
+    a(ui-sref="char") Choose a character!

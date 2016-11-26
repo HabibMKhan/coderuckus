@@ -1,0 +1,113 @@
+#stat-edit, #move-edit {
+  width: 70%;
+  border: 2px solid #14ab67;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#edit-title {
+  font-size: 22px;
+  color: #14ab67;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+#main.edit-page {
+  margin-top: 100px;
+}
+
+.stat-edit__stat-types {
+  margin-bottom: 15px;
+}
+.stat-edit__stat-type {
+  color: $cr-purple;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.stat-edit__stat-type--tip {
+  color: $cr-red;
+  font-size: 16px;
+}
+
+.stat-edit__stat--javascript {
+  display: inline-block;
+  font-family: Consolas,monaco,monospace;
+  color: $cr-blue;
+}
+
+.ng-invalid-max {
+  border: 2px solid #cc0000;
+}
+
+.move-edit__move {
+  display: inline-block;
+  width: 48%;
+  padding: 1%;
+  margin-right: 1%;
+  margin-bottom: 10px;
+  background-color: #a3a1dd;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: #312bb3;
+  }
+  & .selectMove {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #0f7d14;
+    text-align: center;
+    clear: both;
+  }
+  &.selected {
+    background-color: #312bb3;
+  }
+}
+
+.move-edit__move-stat {
+  float: right;
+  margin-left: 10px;
+}
+
+.move-edit__available__title {
+  font-size: 18px;
+  color: $cr-purple;
+  margin-bottom: 10px;
+}
+
+.move-edit__move--default {
+  background-color: $cr-blue;
+  color: white;
+  width: 45%;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5%;
+}
+.default-move__text {
+  color: $cr-blue;
+}
+
+.toggle-edit, .go-village {
+  width: 30%;
+  display: inline-block;
+}
+
+.toggle-edit__button, .btn-village {
+  height: 60px;
+  color: white;
+  font-size: 18px;
+  margin: 15px 0px;
+  padding: 15px;
+}
+
+.btn-village {
+  background-color: #77120e;
+  padding: 10px;
+}
+.toggle-edit__button {
+  background-color: #14ab67;
+}

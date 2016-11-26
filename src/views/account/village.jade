@@ -1,0 +1,46 @@
+div(id="main" class="main__village" ng-controller="villageController")
+  div(id="everything")
+    div(class="villageWorld") Village World
+    div(id="instruction" class="village") You have {{enemies.length - enemiesDefeated.length}} enemies left to defeat!
+    
+    div(class="villageAreas")
+      div(class="villageArea" ng-hide="enemyHide[$index]" ng-click="enemySet(e)" ng-repeat="e in enemies" ui-sref="battle") {{e.name}}
+      
+    div(class="enemies__header enemiesDefeated__header") Enemies Defeated:
+    div(class="enemies__body enemiesDefeated__body" ng-repeat="enemy in enemiesDefeated") enemiesDefeated.push(&quot{{enemy}}&quot);
+    div(class="enemies__body enemiesDefeated__body") >> {{enemiesDefeated}}
+    div(class="enemies__header enemiesLostTo__header") Enemies Lost To:
+    div(class="enemies__body enemiesLostTo__body" ng-repeat="enemy in enemiesLostTo") enemiesDefeated.push(&quot{{enemy}}&quot);
+    div(class="enemies__body enemiesDefeated__body") >> {{enemiesLostTo}}
+    
+    div(id="winConditionMet" ng-click="hideWin=true" ng-hide="hideWin" ng-if="winCondition") YOU WIN!!! You saved the village!
+
+    div(id="stat-summary" class="stat-summary")
+     div(class="stat-summary__name-label") Name:
+     div(class="stat-summary__name-value stat--javascript") >> {{userName}}
+     div(class="stat-summary__type-label") Class:
+     div(class="stat-summary__type-value stat--javascript") >> {{chartype}}
+     div(class="stat-summary__type-label") Subclass:
+     div(class="stat-summary__type-value stat--javascript") >> {{subtype}}
+     
+     div(class="stat-summary__stat")
+       div(class="stat-summary__stat__heading") Stats
+       div(class="stat-summary__name-label") Toughness:
+       div(class="stat-summary__name-value stat--javascript") >> {{toughness}}
+       div(class="stat-summary__type-label") Power:
+       div(class="stat-summary__type-value stat--javascript") >> {{power}}
+       div(class="stat-summary__type-label") Evasion:
+       div(class="stat-summary__type-value stat--javascript") >> {{evasion}}
+       div(class="stat-summary__type-label") Accuracy:
+       div(class="stat-summary__type-value stat--javascript") >> {{accuracy}}
+       div(class="stat-summary__type-label") Selected Move:
+       div(class="stat-summary__type-value stat--javascript") >> {{selectedMove}}
+     
+   a(id="surveyLink" href="https://goo.gl/forms/8w7s73XuloytxelI3" target="_blank" ng-hide="winCondition") Survey after you're done playing :)
+   a(id="surveyLink__win" href="https://goo.gl/forms/8w7s73XuloytxelI3" target="_blank" ng-show="winCondition") Congrats on winning! Fill this survey please :D
+
+   button(class="back-char" class="btn") 
+    a(ui-sref="char") Back to Character selection
+   button(class="back-home" class="btn" style="margin-top:150px;") 
+    a(ui-sref="home") Back home
+   img(class="char char-village" ng-src="{{imgUrl}}")

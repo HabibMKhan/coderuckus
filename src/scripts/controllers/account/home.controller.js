@@ -2,19 +2,18 @@
 
 (function () {
 
-    function homeController($scope) {
+    function homeController($scope, $stateParams) {
         $scope.start = function () {
             //Write your code here
             $scope.chooseChar = false;
             $scope.nextText = "Next";
             $scope.narrative = [
-              "You're ready to fight for the village!",
-              "Or games like this one!",
-              "You can then develop web and mobile applications!",
-              "Primarily we teach JavaScript.",
-              "You'll learn a ton!",
-              "I hope you enjoy it!",
-              "Welcome to the game"
+              "Yvette: So get ready to fight to protect the village! Click the green button to choose a character.",
+              "Yvette: Anyway, the village is in danger...",
+              "Yvette: Or you can make a game like this one!",
+              "Yvette: Knowing JS will allow you to build web or mobile apps!",
+              "Yvette: Playing this game will teach you JavaScript :)",
+              "Yvette: Hi there, welcome to Code Ruckus!"
             ];
             $scope.nextNarrative = $scope.narrative.pop();
         };
@@ -27,17 +26,21 @@
           } else {
             $scope.nextText = "Next";
           }
-
           if($scope.narrative.length < 1) {
             $scope.chooseChar = true;
+          } else {
+            $scope.chooseChar = false;
+          }
+          if($scope.narrative.length < 1) {
+
             $scope.narrative = [
-              "You're ready to fight for the village!",
-              "Or games like this one!",
-              "You can then develop web and mobile applications!",
-              "Primarily we teach JavaScript.",
-              "You'll learn a ton!",
-              "I hope you enjoy it!",
-              "Welcome to the game"
+              "Yvette: So get ready to fight to protect the village! Click the green button to choose a character.",
+              "Yvette: Anyway, the village is in danger...",
+              "Yvette: Or you can make a game like this one!",
+              "Yvette: Knowing JS will allow you to build web or mobile apps!",
+              "Yvette: Playing this game will teach you JavaScript :)",
+              "Yvette: Hi there, welcome to Code Ruckus!",
+              "Yvette: Alright I'll repeat myself... you better listen this time :P"
             ];
           }
         }
@@ -46,6 +49,6 @@
 
     }
 
-    app.controller('homeController', ['$scope', homeController]);
+    app.controller('homeController', ['$scope', '$stateParams', homeController]);
 
 })();

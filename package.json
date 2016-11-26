@@ -1,14 +1,11 @@
 {
-  "name": "angular-app-skeleton",
+  "name": "code-ruckus",
   "version": "0.1.1",
-  "description": "This is a skeleton of an angular application.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NutBoltu/angular-app-skeleton.git"
-  },
-  "author": "Farhad Yasir",
+  "description": "This is a game to teach JavaScript (JS).",
+  "author": "Habib Khan",
   "license": "MIT",
   "keywords": [
+    "code-ruckus"
     "angular app skeleton",
     "angular-single-app-seed",
     "angular",

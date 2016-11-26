@@ -1,5 +1,11 @@
 div(id="main" ng-controller="charController")
-   div(id="narrative") {{ nextNarrative }}
-   img(id="archer" src="../../img/characters/archer.svg")
-   button(id="chooseChar" class="btn") 
-   a(ui-sref="home") Back home
+   div(id="instruction") {{ instruction }}
+   div(id="tooltip" ng-show="showNarrative") {{ nextNarrative }}
+   button(id="tooltip-button" ng-click="pickRandom()" ui-sref="stats" ng-show="showNarrative") Pick randomly for me!
+   div(id="charSelect")
+     div(ng-repeat="char in characters" class="charBox" ng-click="charClick(char.type)")
+      img(class="char char-char" ng-src="{{char.url}}")
+      div(class="char-select" ui-sref="stats")
+        p(class="char-select__text") Select
+   button(id="backNav" class="btn" ui-sref="home") 
+    a(ui-sref="home") Back home

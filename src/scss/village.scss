@@ -1,0 +1,104 @@
+#everything {
+  height: 100%;
+}
+#main.main__village {
+    margin-top: 100px;
+}
+
+.stat-summary__stat {
+  margin-top: 20px;
+}
+
+.char-village {
+  height: 30%;
+  position: fixed;
+  right: 30%;
+  bottom: 80px;
+}
+
+.villageWorld {
+  color: $cr-red;
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+#instruction.village {
+  margin-top: 20px;
+  width: 50%;
+}
+
+.villageAreas {
+  margin: 10px;
+  width: 70%;
+}
+
+.villageArea {
+  padding: 20px;
+  padding-top: 40px;
+  width: 120px;
+  height: 120px;
+  background-color: #d0eed1;
+  color: #1b14ab;
+  font-size: 18px;
+  float: left;
+  margin: 20px;
+  border-radius: 100% !important;
+  text-align: center;
+  cursor: pointer;
+}
+
+.enemies__header, .enemies__body {
+  clear: both;
+  font-size: 14px;
+}
+.enemies__header {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.enemies__body {
+  width: 100%;
+  display: inline-block;
+  font-family: Consolas,monaco,monospace;
+  color: $cr-blue;
+}
+
+.stat--javascript {
+  font-family: Consolas,monaco,monospace;
+  color: $cr-blue;
+}
+
+#winConditionMet {
+  color: $cr-green;
+  background-color: #b8e5d1;
+  height: 200px;
+  width: 50%;
+  font-size: 48px;
+  text-align: center;
+  padding: 22px;
+  position: fixed;
+  left: 50px;
+  bottom: 250px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#surveyLink, #surveyLink__win {
+  color: $cr-blue;
+  height: 50px;
+  font-size: 18px;
+  position: fixed;
+  left: 50px;
+  bottom: 60px;
+  font-weight: bold;
+  width: 40%;
+}
+
+#surveyLink__win {
+  bottom: 150px;
+  left: 5%;
+  font-size: 24px;
+}
