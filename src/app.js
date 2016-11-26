@@ -7,8 +7,8 @@ var appModules = [
 
 var app = angular.module('myApp', appModules);
 
-function run($rootScope, $state, userService) {
+function run($rootScope, $state) {
   $state.go('home');
 }
 
-app.run(['$rootScope', '$state', 'userService', run]);   
+app.run(['$rootScope', '$state', run]);   
