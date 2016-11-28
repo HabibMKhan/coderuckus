@@ -1,8 +1,19 @@
 #stat-edit, #move-edit {
-  width: 70%;
+  width: 100%;
   border: 2px solid #14ab67;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+#move-edit {
+  width: 70%;
+}
+
+#instruction.editStats {
+  position: fixed;
+  width: 45%;
+  left: 25%;
+  bottom: 8%;
 }
 
 #edit-title {
@@ -13,7 +24,7 @@
   margin-bottom: 10px;
 }
 
-#main.edit-page {
+#main.editPage {
   margin-top: 100px;
 }
 

@@ -80,8 +80,8 @@
   text-align: center;
   padding: 22px;
   position: fixed;
-  left: 50px;
-  bottom: 250px;
+  left: 12%;
+  bottom: 10%;
   font-weight: bold;
   cursor: pointer;
 }
@@ -92,13 +92,27 @@
   font-size: 18px;
   position: fixed;
   left: 50px;
-  bottom: 60px;
+  bottom: 2%;
   font-weight: bold;
   width: 40%;
 }
 
 #surveyLink__win {
-  bottom: 150px;
+  bottom: 2%;
   left: 5%;
   font-size: 24px;
+}
+
+#gameReset {
+  position: fixed;
+  right: 6%;
+  bottom: 6%;
+  background-color: $cr-purple;
+  color: white;
+  width: 300px;
+  height: 120px;
+  font-size: 36px;
+  padding-top: 30px;
+  text-align: center;
+  cursor: pointer;
 }

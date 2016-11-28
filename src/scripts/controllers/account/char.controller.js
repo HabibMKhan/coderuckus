@@ -29,7 +29,7 @@
               viking: "Mason is a viking. He has the highest endurance.",
               wizard: "Sage. We don't know anything about him or her."
             };
-            $scope.instruction = 'Click on a character image for more info on that character. When you are ready, click Select';
+            $scope.instruction = 'Click on the RED box to Select the character you want.';
         };
 
         $scope.charClick = (charName) => {
@@ -70,6 +70,36 @@
           sessionStorage.subclass = 'defaultSubclass';
         }
 
+        // SHOW TIPS FUNCTIONALITY
+        $scope.showTips = true;
+        $scope.showTipsText = 'Hide Tips';
+        if (sessionStorage.showTips !== undefined) {
+          if (sessionStorage.showTips === 'false') {
+            $scope.showTips = false;
+            $scope.showTipsText = 'Show Tips';
+          } else {
+            $scope.showTips = true;
+            $scope.showTipsText = 'Hide Tips';
+          }
+        } else {
+          sessionStorage.showTips = true;
+          $scope.showTips = true;
+          $scope.showTipsText = 'Hide Tips';
+        }
+
+        $scope.toggleShowTips = () => {
+          if ($scope.showTips === false) {
+            sessionStorage.showTips = true;
+            $scope.showTips = true;
+            $scope.showTipsText = 'Hide Tips';
+          } else {
+            sessionStorage.showTips = false;
+            $scope.showTips = false;
+            $scope.showTipsText = 'Show Tips';
+          }
+        }
+
+        $scope.tipForUser = "<-- Click red box to select";
         $scope.start();
 
     }

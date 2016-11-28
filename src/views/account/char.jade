@@ -1,5 +1,7 @@
 div(id="main" ng-controller="charController")
-   div(id="instruction") {{ instruction }}
+   div(id="instruction" ng-show="showTips") Click on the 
+    span(class="red") RED 
+    span(class="reg-text") box to select the character you want.
    div(id="tooltip" ng-show="showNarrative") {{ nextNarrative }}
    button(id="tooltip-button" ng-click="pickRandom()" ui-sref="stats" ng-show="showNarrative") Pick randomly for me!
    div(id="charSelect")
@@ -7,5 +9,7 @@ div(id="main" ng-controller="charController")
       img(class="char char-char" ng-src="{{char.url}}")
       div(class="char-select" ui-sref="stats")
         p(class="char-select__text") Select
-   button(id="backNav" class="btn" ui-sref="home") 
-    a(ui-sref="home") Back home
+   div(id="gameNav")
+     button(id="backNav" class="btn" ui-sref="home") 
+      a(ui-sref="home") Home
+     button(class="showTips" ng-click="toggleShowTips()") {{showTipsText}}

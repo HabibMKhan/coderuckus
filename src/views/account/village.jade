@@ -35,12 +35,14 @@ div(id="main" class="main__village" ng-controller="villageController")
        div(class="stat-summary__type-value stat--javascript") >> {{accuracy}}
        div(class="stat-summary__type-label") Selected Move:
        div(class="stat-summary__type-value stat--javascript") >> {{selectedMove}}
+       
+   div(id="gameNav")
+    button(class="backNav" class="btn" ui-sref="home") Home
+    button(class="backNav" class="btn" ui-sref="char") Char
+    button(class="backNav" class="btn" ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})" ng-show="subclass !== 'defaultSubclass'") Edit
      
    a(id="surveyLink" href="https://goo.gl/forms/8w7s73XuloytxelI3" target="_blank" ng-hide="winCondition") Survey after you're done playing :)
    a(id="surveyLink__win" href="https://goo.gl/forms/8w7s73XuloytxelI3" target="_blank" ng-show="winCondition") Congrats on winning! Fill this survey please :D
 
-   button(class="back-char" class="btn") 
-    a(ui-sref="char") Back to Character selection
-   button(class="back-home" class="btn" style="margin-top:150px;") 
-    a(ui-sref="home") Back home
-   img(class="char char-village" ng-src="{{imgUrl}}")
+   div(id="gameReset" ng-show="winCondition" ng-click="resetGame()" ui-sref="home") Play again!
+   

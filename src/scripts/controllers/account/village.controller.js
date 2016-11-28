@@ -29,10 +29,10 @@
             {name: 'centaur2', toughness: 5, power: 5, accuracy: 5, evasion: 5},
             {name: 'robot', toughness: 5, power: 5, accuracy: 5, evasion: 5},
             {name: 'spaceArmor', toughness: 5, power: 5, accuracy: 5, evasion: 5},
-            {name: 'stone-giant', toughness: 5, power: 5, accuracy: 5, evasion: 5}
+            {name: 'stoneGiant', toughness: 5, power: 5, accuracy: 5, evasion: 5}
           ]
 
-          $scope.enemyList = ['orc', 'centaur2', 'robot', 'spaceArmor', 'stone-giant'];
+          $scope.enemyList = ['orc', 'centaur2', 'robot', 'spaceArmor', 'stoneGiant'];
           $scope.enemyHide = ['','','','',''];
 
           $scope.enemiesDefeated = [];
@@ -73,6 +73,28 @@
             console.log('e 2', e);
             console.log('sessionStorage.enemyName', sessionStorage.enemyName)
           };
+
+          $scope.resetGame = () => {
+            sessionStorage.chartype = '';
+            sessionStorage.power = 1;
+            sessionStorage.toughness = 1;
+            sessionStorage.accuracy = 1;
+            sessionStorage.evasion = 1;
+            sessionStorage.chartype = 'defaultChartype';
+            sessionStorage.subclass = 'defaultSubclass';
+            sessionStorage.move3 = '';
+            sessionStorage.move3index = '';
+            sessionStorage.enemiesDefeated = [];
+            sessionStorage.enemiesLostTo = [];
+            sessionStorage.enemyName = '';
+            sessionStorage.centaur2 = '';
+            sessionStorage.orc = '';
+            sessionStorage.robot = '';
+            sessionStorage.spaceArmor = '';
+            sessionStorage.stoneGiant = '';
+
+            console.log('sessionStorage', sessionStorage);
+          }
         };
         $scope.start();
 

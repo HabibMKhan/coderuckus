@@ -13,7 +13,7 @@
 }
 
 .char.char--battle {
-  left: 0;
+  left: 15%;
 }
 
 .hit-text, .enemyHit-text {
@@ -97,7 +97,7 @@ progress[value]::-webkit-progress-bar {
   width: 40%;
   left: 30%;
   position: fixed;
-  bottom: 200px;
+  bottom: 10%;
   height: 100px;
   padding: 6px;
   background-color: orange;

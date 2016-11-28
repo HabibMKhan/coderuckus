@@ -16,7 +16,7 @@
           $scope.enemyHp = 40;
           $scope.enemyMax = 40;
 
-          $scope.enemies = ['orc', 'centaur2', 'robot', 'spaceArmor', 'stone-giant'];
+          $scope.enemies = ['orc', 'centaur2', 'robot', 'spaceArmor', 'stoneGiant'];
 
           if (sessionStorage.enemiesDefeated === undefined) {
             sessionStorage.enemiesDefeated = [];

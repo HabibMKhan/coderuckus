@@ -1,6 +1,11 @@
 div(id="main" ng-controller="homeController")
+   img(id="villageImg" src="../../img/environments/village.svg")
    div(id="footer") {{ nextNarrative }}
-   button(id="story" class="btn" ng-click="storyClick()") {{nextText}}
+   button(id="story" ng-if="nextText !== 'Back to beginning'" class="btn" ng-click="storyClick()") {{nextText}}
    img(id="witch" src="../../img/characters/angel_normal.svg")
-   button(id="chooseChar" class="btn" ng-if="chooseChar" ui-sref="char") 
-    a(ui-sref="char") Choose a character!
+   button(id="chooseChar" class="btn" ng-if="chooseChar" ui-sref="char") Choose a character!
+   div(class="tipForUser right" ng-show="showTips" ng-if="!chooseChar") {{tipForUser}}
+   div(class="tipForUser left" ng-show="showTips" ng-if="chooseChar") {{tipForUser}}
+   
+   div(id="gameNav")
+    button(class="showTips" ng-click="toggleShowTips()") {{showTipsText}}
