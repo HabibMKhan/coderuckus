@@ -36,10 +36,12 @@ div(id="main" class="main__village" ng-controller="villageController")
        div(class="stat-summary__type-label") Selected Move:
        div(class="stat-summary__type-value stat--javascript") >> {{selectedMove}}
        
-   div(id="gameNav")
+  div(id="gameNavTip" ng-show="showTips") Nav Menu
+  div(id="gameNav")
     button(class="backNav" class="btn" ui-sref="home") Home
-    button(class="backNav" class="btn" ui-sref="char") Char
-    button(class="backNav" class="btn" ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})" ng-show="subclass !== 'defaultSubclass'") Edit
+    button(class="backNav" class="btn" ui-sref="char") Character Select
+    button(class="backNav" class="btn" ui-sref="edit") Stats and Moves
+    button(class="showTips" ng-click="toggleShowTips()") {{showTipsText}}
      
    a(id="surveyLink" href="https://goo.gl/forms/8w7s73XuloytxelI3" target="_blank" ng-hide="winCondition") Survey after you're done playing :)
    a(id="surveyLink__win" href="https://goo.gl/forms/8w7s73XuloytxelI3" target="_blank" ng-show="winCondition") Congrats on winning! Fill this survey please :D

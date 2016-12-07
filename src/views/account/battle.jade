@@ -23,6 +23,7 @@ div(id="main" ng-controller="charController")
   div(id="battleMoves" ng-hide="((battleOutcome === 'Win') || (battleOutcome === 'Lose'))")
     div(class="battleMoves__ability" ng-click="abilityUsed($index)" ng-repeat="move in charAbilities") {{move.name}}
 
+  div(id="gameNavTip" ng-show="showTips") Nav Menu
   div(id="gameNav")
    button(class="backNav" class="btn" ui-sref="home") Home
-   button(class="backNav" class="btn" ui-sref="char") Char
+   button(class="backNav" class="btn" ui-sref="char") Character Select

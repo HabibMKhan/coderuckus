@@ -2,35 +2,74 @@ div(id="main" class="editPage" ng-controller="editController")
    div(id="instruction" class="editPage editStats" ng-show="(showTips) && (toggle==='Edit Moves')") Enter stats (0-99) based on
     span(class="red")  MAXSTAT 
     span() (currently {{maxstat}}) and Strength / Speed
+   div(id="charCode" class="help-code editPage" ng-click="toggleHelp()") {{toggleHelpText}}
    div(id="edit-title") {{editTitle}}
-   div(id="stat-edit" ng-show="toggle==='Edit Moves'")
+   div(id="stat-edit" ng-show="(toggle==='Edit Moves') && !help")
      div(class="stat-edit__stat-types")
-       div(class="stat-edit__stat-type") STRENGTH: {{strength}}
-       div(class="stat-edit__stat-type") SPEED: {{speed}}
-       div(class="stat-edit__stat-type") MAXSTAT {{maxstat}}
-       div(class="stat-edit__stat-type--tip") Spend STRENGTH and SPEED points, but don't exceed MAXSTAT.
+       div(class="stat-edit__stat-type") STRENGTH: 
+        span(class="stat--borderbox") {{strength}}
+       div(class="stat-edit__stat-type") SPEED: 
+        span(class="stat--borderbox") {{speed}}
+       div(class="stat-edit__stat-type blue") MAXSTAT 
+        span(class="stat--borderbox--blue blue") {{maxstat}}
      
-     div(class="stat-edit__stat-label") Toughness:
-     div(class="stat-edit__stat--javascript") let sessionStorage.toughness = 
+     div(class="stat-edit__stat--javascript") >> sessionStorage.toughness = 
      input(class="stat-edit__stat-input" ng-change="toughnessAdjust()" min="0" ng-max="maxstat" type="number" ng-model="toughness" placeholder="e.g., 1, 2, 3")
-     div(class="stat-edit__move-invalid" ng-if="toughness === undefined") Error: Toughness greater than max.
+     div(class="stat-edit__move-invalid purple" ng-if="toughness === undefined") Enter a 
+      span(class="stat-edit__move-invalid purple purple-shade") toughness 
+      span(class="stat-edit__move-invalid purple") value between 0 and {{maxstat}}
 
-     div(class="stat-edit__stat-label") Power:
-     div(class="stat-edit__stat--javascript") let sessionStorage.power = 
+     div(class="stat-edit__stat--javascript") >> sessionStorage.power = 
      input(class="stat-edit__stat-input" ng-change="powerAdjust()" min="0" ng-max="maxstat" type="number" ng-model="power" placeholder="e.g., 1, 2, 3")
-     div(class="stat-edit__move-invalid" ng-if="power === undefined") Error: Power greater than max.
+     div(class="stat-edit__move-invalid purple" ng-if="power === undefined") Enter a 
+      span(class="stat-edit__move-invalid purple purple-shade") power 
+      span(class="stat-edit__move-invalid purple") value between 0 and {{maxstat}}
+     div(class="stat-edit__move-invalid red" ng-show="(toughness === maxstat) && (power === maxstat)") Lower either toughness or power by 1
+     div(class="stat-edit__stat--javascript") >> if ((toughness + power) < 5 )) {
+       div(class="stat-edit__stat--javascript") >> console.log('Total STRENGTH (5) unused')
+       div(class="stat-edit__stat--javascript") >> }
+     div(class="stat-edit__move-invalid red red-shade" ng-show="(toughness + power) < 5") Total STRENGTH (5) unused
 
-     div(class="stat-edit__stat-label") Evasion:
-     div(class="stat-edit__stat--javascript") let sessionStorage.evasion = 
+     div(class="stat-edit__stat--javascript") >> sessionStorage.evasion = 
      input(class="stat-edit__stat-input" ng-change="evasionAdjust()" min="0" ng-max="maxstat" type="number" ng-model="evasion" placeholder="e.g., 1, 2, 3")
-     div(class="stat-edit__move-invalid" ng-if="evasion === undefined") Error: Evasion greater than max.
+     div(class="stat-edit__move-invalid purple" ng-if="evasion === undefined") Enter an 
+      span(class="stat-edit__move-invalid purple purple-shade") evasion 
+      span(class="stat-edit__move-invalid purple") value between 0 and {{maxstat}}
 
-     div(class="stat-edit__stat-label") Accuracy:
-     div(class="stat-edit__stat--javascript") let sessionStorage.accuracy = 
+     div(class="stat-edit__stat--javascript") >> sessionStorage.accuracy = 
      input(class="stat-edit__stat-input" ng-change="accuracyAdjust()" min="0" ng-max="maxstat" type="number" ng-model="accuracy" placeholder="e.g., 1, 2, 3")
-     div(class="stat-edit__move-invalid" ng-if="accuracy === undefined") Error: Accuracy greater than max.
-     
-   div(id="move-edit" ng-show="toggle==='Edit Stats'")
+     div(class="stat-edit__move-invalid purple" ng-if="accuracy === undefined") Enter an 
+      span(class="stat-edit__move-invalid purple purple-shade") accuracy 
+      span(class="stat-edit__move-invalid purple") value between 0 and {{maxstat}}
+     div(class="stat-edit__move-invalid red" ng-show="(evasion === maxstat) && (accuracy === maxstat)") Lower either evasion or accuracy by 1
+     div(class="stat-edit__stat--javascript") >> if ((evasion + accuracy) < 5 )) {
+       div(class="stat-edit__stat--javascript") >> console.log('Total SPEED (5) unused')
+       div(class="stat-edit__stat--javascript") >> }
+     div(class="stat-edit__move-invalid red red-shade" ng-show="(evasion + accuracy) < 5") Total SPEED (5) unused
+
+   div(id="stat-edit" ng-show="(toggle==='Edit Moves') && help")  
+    div(class="editStats__codeTips") 
+      div(class="init-chartype comment--javascript editPage title") Storing Power in Session Storage
+      div(class="stat-edit__stat--javascript push1") >> sessionStorage.power = 
+      input(class="stat-edit__stat-input" min="0" ng-max="maxstat" type="number" ng-model="helpPower" placeholder="e.g., 1, 2, 3")
+      div(class="init-chartype comment--javascript editPage") // If it's not in the valid range, see an error
+      div(class="stat-edit__stat--javascript push1") >> if (sessionStorage.power === undefined) {
+      div(class="stat-edit__stat--javascript push1") >> console.log(&quotEnter a power value between 0 and {{maxstat}}&quot)}
+      div(class="stat-edit__move-invalid purple" ng-if="helpPower === undefined") Enter a power value between 0 and {{maxstat}}
+        span(class="init-chartype comment--javascript editPage space1") // power is undefined
+      div(class="init-chartype comment--javascript editPage") // This works because if the power is not 
+      div(class="init-chartype comment--javascript editPage") // between 0 and 3, it's set to 
+        span(class="stat-edit__stat--javascript red") undefined
+      div(class="references")
+        div(class="references__title") References:
+        a(class="init-chartype link--javascript charPage" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else" title="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else") if/else
+        a(class="init-chartype link--javascript charPage" target="_blank" href="http://www.w3schools.com/html/html5_webstorage.asp" title="http://www.w3schools.com/html/html5_webstorage.asp") sessionStorage
+        a(class="init-chartype link--javascript charPage" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity_strict_equality_()" title="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity_strict_equality_()") ===
+        a(class="init-chartype link--javascript charPage" target="_blank" href="http://www.w3schools.com/jsref/jsref_undefined.asp" title="http://www.w3schools.com/jsref/jsref_undefined.asp") undefined
+
+
+
+   div(id="move-edit" ng-show="(toggle==='Edit Stats') && !help")
     div(class="move-edit__available__title") 
       span(ng-if="abilityCount > 0") Choose {{abilityCount}} ability. 
       span() {{moveCount}} abilities currently selected. 
@@ -49,6 +88,9 @@ div(id="main" class="editPage" ng-controller="editController")
         div(class="move-edit__move-stat" ng-show="move.power>0") Power: +{{move.power}}
         div(class="move-edit__move-stat" ng-show="move.evasion>0") Evasion: +{{move.evasion}}
         div(class="move-edit__move-stat" ng-show="move.accuracy>0") Accuracy: +{{move.accuracy}}
+        
+   div(id="stat-edit" ng-show="(toggle==='Edit Stats') && help")  
+    div() You are now being helped on Edit Moves
    
    div(class="toggle-edit")
     button(class="toggle-edit__button" ng-click="toggleEdit()") {{toggle}}
@@ -74,8 +116,9 @@ div(id="main" class="editPage" ng-controller="editController")
     div(class="stat-summary__type-label") Abilities:
     div(class="stat-summary__type-value stat--javascript" ng-repeat="move in charMoves") >> {{move.name}}
     
+    div(id="gameNavTip" ng-show="showTips") Nav Menu
     div(id="gameNav")
      button(class="backNav" class="btn" ui-sref="home") Home
-     button(class="backNav" class="btn" ui-sref="char") Char
-     button(class="backNav" class="btn" ui-sref="stats") Stats
-     button(class="backNav main" ng-show="editCompleted" ng-click="setStats()" ui-sref="village") Go protect the village!
+     button(class="backNav" class="btn" ui-sref="char") Character Select
+     button(class="backNav" class="btn" ui-sref="stats") Subclass Select
+     button(class="menuItem blue-bg" ng-show="editCompleted" ng-click="setStats()" ui-sref="village") Go protect the village!

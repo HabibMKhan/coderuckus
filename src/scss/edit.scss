@@ -1,31 +1,51 @@
 #stat-edit, #move-edit {
-  width: 100%;
+  width: 50%;
   border: 2px solid #14ab67;
   padding: 10px;
   margin-bottom: 20px;
 }
 
-#move-edit {
-  width: 70%;
-}
-
 #instruction.editStats {
   position: fixed;
-  width: 45%;
+  width: 60%;
   left: 25%;
-  bottom: 8%;
+  bottom: 5%;
+}
+
+.help-code.editPage, #edit-title {
+  width: 50%;
 }
 
 #edit-title {
-  font-size: 22px;
-  color: #14ab67;
+  padding: 4px;
+  background-color: #14ab67;
+  font-size: 18px;
   font-weight: bold;
-  font-style: italic;
-  margin-bottom: 10px;
+  color: white;
+  text-align: center;
 }
 
 #main.editPage {
+  width: 76%; /*100 - 12 -12*/
   margin-top: 100px;
+}
+
+.stat--borderbox {
+  border: 1px solid $cr-purple;
+  padding: 2px 10px;
+}
+
+.stat--borderbox--blue {
+  border: 1px solid $cr-blue;
+  padding: 2px 10px;
+}
+.stat-edit__stat--javascript {
+  margin-bottom: 7px;
+}
+
+.stat-edit__move-invalid {
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .stat-edit__stat-types {
@@ -39,6 +59,7 @@
 }
 
 .stat-edit__stat-type--tip {
+  margin-top: 5px;
   color: $cr-red;
   font-size: 16px;
 }
@@ -121,4 +142,34 @@
 }
 .toggle-edit__button {
   background-color: #14ab67;
+}
+
+
+/*
+Code Section
+*/
+
+.comment--javascript.editPage {
+  font-size: 15px;
+  &.title {
+    color: $cr-purple;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+
+  .toggle-edit__button {
+    margin: -10px 0px;
+  }
+
+  #instruction.editStats {
+    width: 70%;
+    bottom: 0%;
+  }
+
+}
+
+#leftEdit {
+    width: 55%;
 }

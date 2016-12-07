@@ -1,15 +1,65 @@
-div(id="main" ng-controller="charController")
-   div(id="instruction" ng-show="showTips") Click on the 
-    span(class="red") RED 
-    span(class="reg-text") box to select the character you want.
+div(id="main" class="charPage" ng-controller="charController")
+   div(id="instruction" ng-show="showTips") Choose your character. Then click the
+    span(class="green space1") GREEN
+    span(class="reg-text space1") box to proceed.
    div(id="tooltip" ng-show="showNarrative") {{ nextNarrative }}
-   button(id="tooltip-button" ng-click="pickRandom()" ui-sref="stats" ng-show="showNarrative") Pick randomly for me!
+   div(id="charCode" class="help-code" ng-click="toggleHelp()") {{toggleHelpText}}
+   div(id="charCode" class="stat--javascript" ng-hide="help") 
+    div(class="title--javascript") Create your character using a JS Object!
+    div(class="init-chartype stat--javascript") >> let 
+      span(class="stat--javascript red") myType 
+      span(class="stat--javascript") = &quot{{chartype}}&quot
+    div(class="init-charobject stat--javascript") >> let 
+      span(class="stat--javascript red") myChar
+      span(class="stat--javascript") = Object.create(
+      span(class="stat--javascript red") myType
+      span(class="stat--javascript") );
+    div(class="init-chardesc stat--javascript") >> console.log(&quotmyChar&quot, 
+      span(class="stat--javascript red") myChar
+      span(class="stat--javascript") );
+    div(class="init-chardesc stat--javascript")
+      div(class="stat--javascript") >> myChar {
+      div(class="stat--javascript tab1" ng-repeat="attribute in attributes")     {{attribute['type']}}: {{attribute[chartype]}}
+        span(ng-show="attribute[chartype]") ,
+      div(class="stat--javascript tab1")     description: "{{charDescriptions[chartype]}}"
+      div(class="stat--javascript") }
+   div(id="charCode" class="title--javascript" ng-show="help")
+    div(class="title--javascript") JavaScript Lesson: Creating an Object
+    div(class="init-chartype comment--javascript charPage") // Declare a variable using "let"
+    div(class="init-chartype stat--javascript") >> let 
+      span(class="stat--javascript green") myType 
+      span(class="stat--javascript ") = &quot{{chartype}}&quot 
+    div(class="init-chartype comment--javascript charPage") // Make an object instance of selected char. type
+    div(class="init-charobject stat--javascript") >> let 
+      span(class="stat--javascript green") myChar
+      span(class="stat--javascript")  = Object.create(
+      span(class="stat--javascript green") myType
+      span(class="stat--javascript") );
+    div(class="init-chartype comment--javascript charPage") // Log what is in myChar
+    div(class="init-chardesc stat--javascript") >> console.log(&quotmyChar&quot, 
+      span(class="stat--javascript green") myChar
+      span(class="stat--javascript") );
+    div(class="stat--javascript") >> myChar {
+    div(class="stat--javascript tab1" ng-repeat="attribute in attributes")     {{attribute['type']}}: {{attribute[chartype]}}
+      span(ng-show="attribute[chartype]") ,
+      span(class="comment--javascript tab1") // derived from {{chartype}} prototype
+    div(class="stat--javascript tab1")     description: "{{charDescriptions[chartype]}}"
+      span(class="comment--javascript tab1") // also derived
+    div(class="stat--javascript last") }
+    div(class="references")
+      div(class="references__title") References:
+      a(class="init-chartype link--javascript charPage" target="_blank" href="http://www.competa.com/blog/2016/08/es6-var-let-const-what-is-the-difference/" title="http://www.competa.com/blog/2016/08/es6-var-let-const-what-is-the-difference/") Var, Let, and Const
+      a(class="init-chartype link--javascript charPage" target="_blank" href="https://msdn.microsoft.com/en-us/library/hh696634.aspx#Anchor_3" title="https://msdn.microsoft.com/en-us/library/hh696634.aspx#Anchor_3") Console.log()
+      a(class="init-chartype link--javascript charPage" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" title="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create") Object.create()
+
+   div(class="char-select green-bg" ui-sref="stats" ng-show="chartype") Continue as 
+    span(class="") {{chartype}}
    div(id="charSelect")
-     div(ng-repeat="char in characters" class="charBox" ng-click="charClick(char.type)")
+     div(ng-repeat="char in characters" class="charBox" ng-click="charClick(char.type)" ng-class="(chartype === char.type) ? 'selected' : 'notselected'" )
       img(class="char char-char" ng-src="{{char.url}}")
-      div(class="char-select" ui-sref="stats")
-        p(class="char-select__text") Select
+   div(id="gameNavTip" ng-show="showTips") Nav Menu
    div(id="gameNav")
      button(id="backNav" class="btn" ui-sref="home") 
       a(ui-sref="home") Home
      button(class="showTips" ng-click="toggleShowTips()") {{showTipsText}}
+     button(class="menuItem blue-bg randomBtn" ng-click="pickRandom()" ui-sref="stats") Pick random!

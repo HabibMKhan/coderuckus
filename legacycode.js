@@ -87,3 +87,8 @@ button(class="back-char" class="btn" ui-sref="char")
  a(ui-sref="char") Back to Character selection
 button(class="back-home" class="btn" style="margin-top:150px;" ui-sref="home")
  a(ui-sref="home") Back home
+
+
+
+// Copy Paste Link Code
+a(class="init-chartype link--javascript charPage" target="_blank" href="linkaka" title="linkaka") Var, Let, and Const

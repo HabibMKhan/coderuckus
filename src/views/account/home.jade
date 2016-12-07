@@ -7,5 +7,6 @@ div(id="main" ng-controller="homeController")
    div(class="tipForUser right" ng-show="showTips" ng-if="!chooseChar") {{tipForUser}}
    div(class="tipForUser left" ng-show="showTips" ng-if="chooseChar") {{tipForUser}}
    
+   div(id="gameNavTip" ng-show="showTips") Menu
    div(id="gameNav")
     button(class="showTips" ng-click="toggleShowTips()") {{showTipsText}}

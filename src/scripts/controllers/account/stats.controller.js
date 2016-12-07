@@ -93,7 +93,23 @@
             $scope.showTipsText = 'Show Tips';
           }
         }
-        
+
+        $scope.help = false; // BOOLEAN: Am I getting helped right now?
+        $scope.toggleHelpText = "Explain this JS code";
+        $scope.toggleHelp = () => {
+          if (!$scope.help) {
+            console.log("$scope.help", $scope.help);
+              $scope.help = true;
+              $scope.toggleHelpText = "Okay, I get it";
+          } else {
+            console.log("$scope.help", $scope.help);
+            $scope.help = false;
+            $scope.toggleHelpText = "Explain this JS code";
+          }
+        }
+        $scope.toggleHelpFalse = "Explain this JS code"
+        $scope.toggleHelpTrue = "Okay, I get it"
+
         $scope.start();
 
     }

@@ -23,9 +23,12 @@ input, button {
 }
 
 #main {
-  margin-top: 180px;
+  margin-top: 100px;
   position: fixed;
   left: 12%;
+}
+#main.editPage {
+  margin-top: 75px;
 }
 
 #charPage {
@@ -134,8 +137,25 @@ input, button {
   }
 }
 
-#backNav, .showTips, .backNav {
+#gameNavTip {
+  position: fixed;
+  left: 0;
+  top: 16%;
+  width: 10%;
+  background-color: $cr-orange;
+  text-align: center;
   font-size: 20px;
+  height: 6%;
+  padding-top: 0.7%;
+  opacity: 0.7;
+  color: white;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+#backNav, .showTips, .backNav, .menuItem {
+  font-size: 16px;
   background-color: $cr-light-teal;
   color: white;
   cursor: pointer;
@@ -165,4 +185,170 @@ input, button {
 .backNav:hover {
   background-color: $cr-blue;
   color: white;
+}
+
+.stat--javascript, .comment--javascript, .link--javascript {
+  font-family: Consolas,monaco,monospace;
+  color: $cr-blue;
+  font-size: 14px;
+}
+.comment--javascript {
+  color: $cr-grey;
+}
+.link--javascript, .link--javascript:visited {
+  position: relative;
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #ccc;
+  color: $cr-bright-red;
+
+  margin: 6px;
+  display: inline-block;
+  width: auto;
+  &:hover {
+    background-color: #aaa;
+    color: $cr-red;
+  }
+}
+
+.inline {
+  display: inline-block;
+}
+
+.title--javascript {
+  font-family: Consolas,monaco,monospace;
+  color: $cr-blue;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.tab1 {
+  padding-left: 30px;
+}
+.space1 {
+  padding-left: 6px;
+}
+.push1 {
+  padding-right: 6px;
+}
+.last {
+  margin-bottom: 10px;
+}
+.italic {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+.purple-shade {
+  text-shadow: 1px 1px $cr-purple;
+}
+.red-shade {
+  text-shadow: 1px 0px $cr-bright-red;
+}
+.black {
+  color: black;
+}
+.white {
+  color: white;
+}
+.dark-red {
+  color: $cr-red;
+}
+.red {
+  color: $cr-bright-red;
+}
+.purple {
+  color: $cr-purple;
+}
+.green {
+  color: $cr-green;
+}
+.blue {
+  color: $cr-blue;
+}
+.orange {
+  color: $cr-orange;
+}
+.light-teal {
+  color: $cr-light-teal;
+}
+.light-blue {
+  color: $cr-light-blue;
+}
+.lighter-blue {
+  color: $cr-lighter-blue;
+}
+.lightest-blue {
+  color: $cr-lightest-blue;
+}
+.bright-red {
+  color: $cr-bright-red;
+}
+.blue-bg {
+  background-color: $cr-blue;
+}
+.green-bg {
+  background-color: $cr-green;
+}
+
+.unselected {
+  background-color: $cr-unselected-blue;
+  &:hover {
+    background-color: $cr-hoverselect-blue;
+  }
+  &.selected, &.selected:hover {
+    background-color: $cr-selected-blue;
+  }
+}
+
+.help-code {
+  color: white;
+  background-color: $cr-purple;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 10px !important;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-height: 960px) {
+
+  .stat--javascript, .comment--javascript, .link--javascript {
+    font-size: 18px;
+  }
+
+
+  #gameNavTip {
+    padding-top: 0.95%;
+  }
+
+
+  #backNav, .showTips, .backNav, .menuItem {
+    font-size: 20px;
+  }
+
+}
+
+
+.menuItem.blue-bg {
+  color: white;
+  &:hover {
+    color: white;
+    background-color: $cr-purple;
+  }
+}
+
+
+.references {
+  margin-bottom: 15px;
+  font-family: Consolas,monaco,monospace;
+}
+.references__title {
+  width: 100%;
+  font-size: 24px;
+  color: grey;
+  font-family: Consolas,monaco,monospace;
+  margin-bottom: 10px;
 }

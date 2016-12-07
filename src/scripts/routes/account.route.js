@@ -19,7 +19,7 @@
                   templateUrl: 'views/account/battle.html'
                 }
               },
-              title: 'Code Ruckus BATTLE!',
+              title: '[CR] BATTLE at JS-Land!',
             })
             .state('village', {
               url: '/village',
@@ -33,7 +33,7 @@
                   templateUrl: 'views/account/village.html'
                 }
               },
-              title: 'Code Ruckus Village',
+              title: '[CR] JS-Land and the Ruckus',
             })
             .state('stats', {
               url: '/stats',
@@ -47,7 +47,7 @@
                   templateUrl: 'views/account/stats.html'
                 }
               },
-              title: 'Character Basic Stats',
+              title: '[CR] Subclass Select',
             })
             .state('edit', {
               url: '/edit',
@@ -67,7 +67,7 @@
                 name: null,
                 hiddenParam: 'YES'
               },
-              title: 'Character Edit Stats',
+              title: '[CR] Stats and Moves',
             })
             .state('char', {
                 url: '/char',
@@ -83,7 +83,7 @@
                     }
                 },
                 cache: false,
-                title: 'CR Choose Char',
+                title: '[CR] Character Select',
                 loginRequired: false
             })
             .state('home', {

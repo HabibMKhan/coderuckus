@@ -1,27 +1,32 @@
 div(id="main" class="statsPage" ng-controller="statsController")
-   div(id="instruction" class="statsPage" ng-show="showTips") Sections of this game may have JavaScript (JS) to show configurability! Hope you can learn some JS :)
+   div(id="instruction" class="statsPage" ng-show="showTips") Choose a subclass to proceed
    div(class="name__label") Enter your character's name:
-   div(class="name__label--javascript") let name = 
-   input(class="name__input" type="text" ng-model="charName" placeholder="Character Name" maxlength="20")
+   div(class="name__label--javascript stat--javascript push1") let name = 
+   input(class="name__input" type="text" ng-model="charName" placeholder="Character Name" maxlength="20" class="stat--javascript space1")
    div(class="type__label") Your character's type (chosen in Character Select):
-   div(class="type__label--javascript") let type = 
-   div(id="type__text") {{ chartype }}
+   div(class="type__label--javascript stat--javascript") let type = 
+   div(id="type__text" class="stat--javascript red space1") {{ chartype }}
    div(id="subclass-selection")
-    button(class="subclass__btn" ng-repeat="class in classes" ng-click="setSubclass($index)" ){{class}}
+    div(class="type__label--javascript stat--javascript push1") let subclass = 
+    button(class="subclass__btn unselected" ng-repeat="class in classes" ng-click="setSubclass($index)" ng-class="(subclass === class) ? 'selected' : 'unselected'") {{class}}
    div(id="stat-summary" class="stat-summary")
-    div(class="stat-summary__name-label") Name:
-    div(class="stat-summary__name-value stat--javascript") >> {{charName}}
-    div(class="stat-summary__type-label") Class:
-    div(class="stat-summary__type-value stat--javascript") >> {{chartype}}
-    div(class="stat-summary__type-label") Subclass:
-    div(class="stat-summary__type-value stat--javascript") >> {{subclass}}
-    img(class="char" ng-src="{{imgUrl}}")
+    div(class="stat-summary__name-label stat--javascript") >> console.log(&quotChar Name: &quot, name);
+    div(class="stat-summary__name-value stat--javascript") >> Char Name: 
+      span(class="stat--javascript green") {{charName}}
+    div(class="stat-summary__type-label stat--javascript") >> console.log(&quotChar Class: &quot, type);
+    div(class="stat-summary__type-value stat--javascript green") >> {{chartype}}
+    div(class="stat-summary__type-label stat--javascript") >> console.log(&quotChar Subclass: &quot, subclass);
+    div(class="stat-summary__type-value stat--javascript green") >> {{subclass}}
+    div(class="stat-summary__type-label stat--javascript") >> console.log(name + ',', 'the', subclass, type);
+    div(class="stat-summary__type-value stat--javascript green") >> {{charName}}, the {{subclass}} {{chartype}}
+    img(class="char statsPage" ng-src="{{imgUrl}}")
 
+   div(id="gameNavTip" ng-show="showTips") Nav Menu
    div(id="gameNav")
     button(class="backNav" class="btn" ui-sref="home") Home
-    button(class="backNav" class="btn" ui-sref="char") Char
+    button(class="backNav" class="btn" ui-sref="char") Character Select
     button(class="showTips" ng-click="toggleShowTips()") {{showTipsText}}
-    button(class="backNav main" class="btn" ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})" ng-show="subclass !== 'defaultSubclass'") Edit
+    button(class="menuItem blue-bg" class="btn" ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})" ng-show="subclass !== 'defaultSubclass'") Edit
 
-   button(class="go-edit" class="btn" ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})" ng-show="subclass !== 'defaultSubclass'") 
+   button(class="go-edit green-bg" class="btn" ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})" ng-show="subclass !== 'defaultSubclass'") 
     a(ng-click="setCharstats()" ui-sref="edit({chartype:chartype,subclass:subclass,name:charName})") Go Edit

@@ -1,3 +1,6 @@
+#main.charPage {
+    width: 40%;
+}
 #tooltip {
 	position: fixed;
 	bottom: 0px;
@@ -14,11 +17,12 @@
 	background-color: #ddd;
 	font-weight: bold;
 	text-shadow: 0.5px 0.5px 0px black;
+  display: none;
 }
 
 #tooltip-button {
   position: fixed;
-  bottom: 30px;
+  bottom: 2%;
   margin: 15px;
   padding: 20px;
   height: 80px;
@@ -29,11 +33,12 @@
 }
 
 #charSelect {
-	width: 50%;
+	width: 40%;
   float: right;
   height: auto;
-  position: relative;
-  margin-top: -80px;
+  position: fixed;
+  top: 100px;
+  right: 100px;
 }
 
 .char {
@@ -45,40 +50,48 @@
   bottom: 180px;
 }
 .char.char-char {
-  height: 60%;
-  width: 200px;
+  width: 100%;
   padding: 20px;
   position: relative;
   bottom: 0;
 }
 
+.char.charPage, .char.statsPage {
+  height: 40%;
+  right: 0;
+  bottom: 0;
+}
+
 .charBox {
 	float: right;
-	margin-left: 20px;
+	margin-left: 3%;
 	margin-bottom: 20px;
-  height: 200px;
-  width: 200px;
+  height: 175px;
+  width: 45%;
 	border: 2px solid black;
 	cursor: pointer;
+  background-color: $cr-smokiest-blue;
   &:hover {
-    background-color: #6688ff;
+    background-color: $cr-smoke-blue;
   }
   & > .char {
-    height: 80%;
+    height: 100%;
   }
-  &:hover > .char-select {
-    opacity: 1;
+  &.selected {
+    background-color: $cr-blue;
   }
 }
 
 .char-select {
-  height: 20%;
-  background-color: $cr-bright-red;
+  padding: 10px;
+  margin-top: 15px;
+  text-align: center;
+  background-color: $cr-green;
   color: white;
   font-size: 22px;
-  opacity: 0.8;
+  cursor: pointer;
   &:hover {
-    font-weight: bold;
+    background-color: $cr-dark-green;
   }
 }
 
@@ -89,9 +102,8 @@
 }
 
 #instruction {
-  width: 50%;
-  margin-top: -80px;
-  margin-bottom: 40px;
+  width: 100%;
+  margin-bottom: 10px;
   font-size: 20px;
   background-color: $cr-orange;
   color: white;
@@ -108,4 +120,34 @@
 
 .red {
   color: $cr-bright-red;
+}
+
+.comment--javascript.charPage, .link--javascript.charPage {
+  margin-top: 6px;
+}
+
+@media screen and (min-height: 960px) {
+
+  .charBox {height:225px;}
+  #instruction {
+    margin-bottom: 15px;
+  }
+
+}
+
+@media screen and (max-height: 960px) {
+
+  #tooltip-button {
+    margin: 10px;
+    padding: 10px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+}
+
+.randomBtn {
+  &:hover {
+    background-color: $cr-purple;
+  }
 }

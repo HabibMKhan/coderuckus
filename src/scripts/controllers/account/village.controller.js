@@ -96,6 +96,36 @@
             console.log('sessionStorage', sessionStorage);
           }
         };
+
+        // SHOW TIPS FUNCTIONALITY
+        $scope.showTips = true;
+        $scope.showTipsText = 'Hide Tips';
+        if (sessionStorage.showTips !== undefined) {
+          if (sessionStorage.showTips === 'false') {
+            $scope.showTips = false;
+            $scope.showTipsText = 'Show Tips';
+          } else {
+            $scope.showTips = true;
+            $scope.showTipsText = 'Hide Tips';
+          }
+        } else {
+          sessionStorage.showTips = true;
+          $scope.showTips = true;
+          $scope.showTipsText = 'Hide Tips';
+        }
+
+        $scope.toggleShowTips = () => {
+          if ($scope.showTips === false) {
+            sessionStorage.showTips = true;
+            $scope.showTips = true;
+            $scope.showTipsText = 'Hide Tips';
+          } else {
+            sessionStorage.showTips = false;
+            $scope.showTips = false;
+            $scope.showTipsText = 'Show Tips';
+          }
+        }
+        
         $scope.start();
 
     }
