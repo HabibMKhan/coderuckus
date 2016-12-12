@@ -1,40 +1,87 @@
 div(id="main" class="main__village" ng-controller="villageController")
+  img(id="villageBackground" src="../../img/environments/agriculture.png" ng-hide="help")
   div(id="everything")
-    div(class="villageWorld") Village World
-    div(id="instruction" class="village") You have {{enemies.length - enemiesDefeated.length}} enemies left to defeat!
+    div(id="villCode" class="help-code villagePage" ng-show="(toggleHelpText!=='Okay, I get it')" ng-click="toggleHelp()") {{toggleHelpText}} - ({{conceptCount}}) concepts to review
+    div(id="villCode" class="help-code villagePage darker-red-bg" ng-show="(toggleHelpText==='Okay, I get it')" ng-click="toggleHelp()") Okay I understand all ({{conceptCount}}) concepts
     
-    div(class="villageAreas")
-      div(class="villageArea" ng-hide="enemyHide[$index]" ng-click="enemySet(e)" ng-repeat="e in enemies" ui-sref="battle") {{e.name}}
+    div(id="villageCode" class="title--javascript" ng-show="help")
+      div(class="title--javascript") JS Lesson 4: Pushing to an array and calculating damage
+      div(class="description--javascript") 
+        span(class="push1") In this lesson we will push to the
+        span(class="push1 green") enemiesDefeated
+        span(class="push1") list using 
+        span(class="push1 red") array.push()
+        span(class="push1") We will also look into calculating damage using
+        span(class="push1 red") Math.random()
+        span(class="push1") and
+        span(class="push1 red") Math.ceil().
       
-    div(class="enemies__header enemiesDefeated__header") Enemies Defeated:
-    div(class="enemies__body enemiesDefeated__body" ng-repeat="enemy in enemiesDefeated") enemiesDefeated.push(&quot{{enemy}}&quot);
-    div(class="enemies__body enemiesDefeated__body") >> {{enemiesDefeated}}
-    div(class="enemies__header enemiesLostTo__header") Enemies Lost To:
-    div(class="enemies__body enemiesLostTo__body" ng-repeat="enemy in enemiesLostTo") enemiesDefeated.push(&quot{{enemy}}&quot);
-    div(class="enemies__body enemiesDefeated__body") >> {{enemiesLostTo}}
-    
-    div(id="winConditionMet" ng-click="hideWin=true" ng-hide="hideWin" ng-if="winCondition") YOU WIN!!! You saved the village!
+      div(class="comment--javascript villPage") // Declare an array using []
+      div(class="stat--javascript") >> let 
+        span(class="stat--javascript green push1") enemiesDefeated
+        span(class="stat--javascript red") = []
+        span(class="stat--javascript") ;
+      div(class="comment--javascript villPage") // Loop through enemies to see which were defeated
+      div(class="init-charobject stat--javascript") >> for (var i=0; i < enemies.length; i++)
+      div(class="stat--javascript tab1") >> if (enemies[i].defeated) {
+        span(class="stat--javascript tab2 green")  enemiesDefeated
+        span(class="stat--javascript red") .push
+        span(class="stat--javascript") (enemies[i].name);
+        div(class="comment--javascript tab1 villPage") // Example array might be >> ["orc", "spaceArmor"]
+      div(class="stat--javascript tab1") }
+      div(class="stat--javascript") }
+      div(class="comment--javascript villPage") // Function for calculateDamage()
+      div(class="stat--javascript push1") >> let 
+        span(class="stat--javascript green") calculateDamage 
+        span(class="stat--javascript push1") = (charPower, enemyToughness) => {
+      div(class="stat--javascript tab1") return 
+        span(class="stat--javascript red") Math.ceil
+        span(class="stat--javascript") ((charPower-enemyToughness)*
+        span(class="stat--javascript red") Math.random()
+        span(class="stat--javascript") );
+      div(class="stat--javascript last") }
+      div(class="references")
+        div(class="references__title") References on ({{conceptCount}}) Concepts:
+        a(class="link--javascript villPage" target="_blank" href="http://www.w3schools.com/jsref/jsref_push.asp" title="http://www.w3schools.com/jsref/jsref_push.asp") array.push()
+        a(class="link--javascript villPage" target="_blank" href="http://www.w3schools.com/jsref/jsref_ceil.asp" title="http://www.w3schools.com/jsref/jsref_ceil.asp") Math.ceil()
+        a(class="link--javascript villPage" target="_blank" href="http://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range" title="http://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range") Math.random()
+        a(class="link--javascript villPage" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" title="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions") Functions in ES6
 
-    div(id="stat-summary" class="stat-summary")
-     div(class="stat-summary__name-label") Name:
-     div(class="stat-summary__name-value stat--javascript") >> {{userName}}
-     div(class="stat-summary__type-label") Class:
-     div(class="stat-summary__type-value stat--javascript") >> {{chartype}}
-     div(class="stat-summary__type-label") Subclass:
-     div(class="stat-summary__type-value stat--javascript") >> {{subtype}}
-     
-     div(class="stat-summary__stat")
-       div(class="stat-summary__stat__heading") Stats
-       div(class="stat-summary__name-label") Toughness:
-       div(class="stat-summary__name-value stat--javascript") >> {{toughness}}
-       div(class="stat-summary__type-label") Power:
-       div(class="stat-summary__type-value stat--javascript") >> {{power}}
-       div(class="stat-summary__type-label") Evasion:
-       div(class="stat-summary__type-value stat--javascript") >> {{evasion}}
-       div(class="stat-summary__type-label") Accuracy:
-       div(class="stat-summary__type-value stat--javascript") >> {{accuracy}}
-       div(class="stat-summary__type-label") Selected Move:
-       div(class="stat-summary__type-value stat--javascript") >> {{selectedMove}}
+       
+    
+    div(id="villageWorldSection" ng-show="!help")
+        div(class="title--javascript") Village World
+        div(id="instruction" class="village") You have {{enemies.length - enemiesDefeated.length}} enemies left to defeat!
+          div(id="consideration" class="red" ng-show="(enemiesLostTo.length > 0) && (enemiesDefeated.length < 3)") Consider revising your moves to utilize powerUps! It's easier to defeat enemies that way.
+          div(class="green" ng-show="(enemiesLostTo.length === 0) && (enemiesDefeated.length === 4)") Almost there...
+          div(class="green" ng-show="(enemiesLostTo.length === 0) && (enemiesDefeated.length === 3)") The villagers call you a hero!
+          div(class="green" ng-show="(enemiesLostTo.length === 0) && (enemiesDefeated.length === 2)") {{userName}}, the {{subtype}} {{chartype}} is getting the hang of it...
+          div(class="green" ng-show="(enemiesLostTo.length === 0) && (enemiesDefeated.length === 1)") Nice, you got one!
+          
+
+        
+        div(class="villageAreas")
+          div(class="enemies__warning fontsize-medium red" ng-show="(enemies.length - enemiesDefeated.length) > 0") These {{enemies.length - enemiesDefeated.length}} enemies are attacking JS-Land:
+          div(class="villageArea" ng-hide="enemyHide[$index]" ng-click="enemySet(e)" ng-repeat="e in enemies" ui-sref="battle") {{e.name}}
+          
+        div(class="enemies__header enemiesDefeated__header") Enemies Defeated:
+        div(class="enemies__body enemiesDefeated__body" ng-repeat="enemy in enemiesDefeated") enemiesDefeated.push(&quot{{enemy}}&quot);
+        div(class="enemies__body enemiesDefeated__body") >> {{enemiesDefeated}}
+        div(class="enemies__header enemiesLostTo__header") Enemies Lost To:
+        div(class="enemies__body enemiesLostTo__body" ng-repeat="enemy in enemiesLostTo") enemiesDefeated.push(&quot{{enemy}}&quot);
+        div(class="enemies__body enemiesDefeated__body") >> {{enemiesLostTo}}
+        
+        div(id="winConditionMet" ng-click="hideWin=true" ng-hide="hideWin" ng-if="winCondition") YOU WIN!!! You saved the village!
+         
+        div(id="stat-summary" class="stat-summary")
+          div(class="title--javascript purple") Character Summary
+            span(class="title--javascript fontsize-medium blue marginL1") (logged to screen):
+          div(class="stat-summary__name-label stat--javascript black") >> console.log(sessionStorage.name + ',', 'the', sessionStorage.subclass, sessionStorage.chartype);
+          div(class="stat-summary__name-value stat--javascript") >> {{userName}}, the {{subtype}} {{chartype}}
+          div(class="stat-summary__name-label stat--javascript black") >> console.log(sessionStorage.toughness, sessionStorage.power, sessionStorage.evasion, sessionStorage.accuracy);
+          div(class="stat-summary__name-value stat--javascript blue") >> {{toughness}} {{power}} {{evasion}} {{accuracy}}
+          div(class="stat-summary__name-label stat--javascript black") >> console.log(sessionStorage.moves);
+          div(class="stat-summary__type-value stat--javascript blue" ng-repeat="move in charMoves track by $index") >> {{move.customName}} | +{{move.damageBoost}} damage, +{{move.hitChanceBoost}}% hit, +{{move.pointsForPowerUp}} {{move.typeForPowerUp}}
        
   div(id="gameNavTip" ng-show="showTips") Nav Menu
   div(id="gameNav")

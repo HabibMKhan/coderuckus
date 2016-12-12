@@ -4,8 +4,8 @@ div(id="main" ng-controller="homeController")
    button(id="story" ng-if="nextText !== 'Back to beginning'" class="btn" ng-click="storyClick()") {{nextText}}
    img(id="witch" src="../../img/characters/angel_normal.svg")
    button(id="chooseChar" class="btn" ng-if="chooseChar" ui-sref="char") Choose a character!
-   div(class="tipForUser right" ng-show="showTips" ng-if="!chooseChar") {{tipForUser}}
-   div(class="tipForUser left" ng-show="showTips" ng-if="chooseChar") {{tipForUser}}
+   div(class="tipForUser home right" ng-show="showTips" ng-if="!chooseChar") {{tipForUser}}
+   div(class="tipForUser home left" ng-show="showTips" ng-if="chooseChar") {{tipForUser}}
    
    div(id="gameNavTip" ng-show="showTips") Menu
    div(id="gameNav")

@@ -8,7 +8,6 @@
 #instruction.editStats {
   position: fixed;
   width: 60%;
-  left: 25%;
   bottom: 5%;
 }
 
@@ -31,8 +30,17 @@
 }
 
 .stat--borderbox {
-  border: 1px solid $cr-purple;
+  border: 2px solid $cr-purple;
   padding: 2px 10px;
+  &.red {
+    border-color: $cr-bright-red;
+  }
+}
+
+.red {
+  .stat--borderbox {
+    border-color: $cr-bright-red;
+  }
 }
 
 .stat--borderbox--blue {
@@ -132,7 +140,7 @@
   height: 60px;
   color: white;
   font-size: 18px;
-  margin: 15px 0px;
+  margin: 5px 0px;
   padding: 15px;
 }
 
@@ -156,20 +164,65 @@ Code Section
     font-size: 18px;
   }
 }
+@media screen and (min-width: 1281px) {
+  #instruction.editPage {
+    font-size: 32px;
+  }
+}
+@media screen and (max-width: 1280px) {
 
-@media screen and (max-width: 960px) {
-
-  .toggle-edit__button {
+  .toggle-edit__button, .btn-village {
     margin: -10px 0px;
   }
+  .toggle-edit__button {
+    margin-left: 75px;
+  }
+
 
   #instruction.editStats {
-    width: 70%;
-    bottom: 0%;
+    right: 3%;
+    width: 40%;
+    bottom: 50px;
   }
 
 }
 
 #leftEdit {
     width: 55%;
+}
+
+
+/*
+  Edit Moves: Moves Selected Buttons
+*/
+
+.moves__moveEdit {
+  width: 100%;
+}
+.moves__buttons {
+  padding: 0px 20%;
+}
+.moves__moveEdit__move {
+  background-color: $cr-besaid;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  width: 30%;
+  margin-right: 2%;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  &.selected {
+    background-color: $cr-blue;
+  }
+}
+
+.moves__moveEdit__complete {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+  background-color: $cr-bright-red;
+  color: white;
+  cursor: pointer;
 }

@@ -61,6 +61,10 @@
   right: 0;
   bottom: 0;
 }
+.char.statsPage {
+  right: 15%;
+  width: 18%;
+}
 
 .charBox {
 	float: right;
@@ -68,7 +72,7 @@
 	margin-bottom: 20px;
   height: 175px;
   width: 45%;
-	border: 2px solid black;
+	border: 3px solid black;
 	cursor: pointer;
   background-color: $cr-smokiest-blue;
   &:hover {
@@ -101,16 +105,6 @@
   margin: auto;
 }
 
-#instruction {
-  width: 100%;
-  margin-bottom: 10px;
-  font-size: 20px;
-  background-color: $cr-orange;
-  color: white;
-  padding: 10px;
-  text-align: center;
-}
-
 .tipForUser.charPage {
   top: 350px;
   right: 0;
@@ -124,6 +118,42 @@
 
 .comment--javascript.charPage, .link--javascript.charPage {
   margin-top: 6px;
+}
+
+@media screen and (max-width: 1280px) {
+  .charBox {
+    height: 150px;
+    width: 42%;
+  }
+  .tipForUser.charSelectPage {
+    font-size: 32px;
+  }
+
+  .references__title {
+    font-size: 18px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .link--javascript, .link--javascript:visited {
+    margin: 3px !important;
+    padding: 8px !important;
+  }
+
+
+}
+
+@media screen and (max-width: 1280px) {
+  .char-select {
+    margin-top: -5px;
+  }
+  #main.charPage {
+    margin-top: 80px;
+  }
+  .charPage {
+    .title--javascript {
+      font-size: $fontsize-medium !important;
+    }
+  }
 }
 
 @media screen and (min-height: 960px) {

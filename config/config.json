@@ -39,6 +39,12 @@
             ],
             "dist":"dist/img"
         },
+        "music":{
+            "src":[
+                "src/music/*"
+            ],
+            "dist":"dist/music"
+        },
         "views": {
             "src" :"src/views/**/*.jade",
             "dist": "dist/views/",

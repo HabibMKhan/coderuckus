@@ -1,9 +1,9 @@
 div(id="main" class="charPage" ng-controller="charController")
-   div(id="instruction" ng-show="showTips") Choose your character. Then click the
-    span(class="green space1") GREEN
-    span(class="reg-text space1") box to proceed.
+   div(id="instruction" ng-show="showTips") 
+     span() Choose a character. Proceed with any choice.
    div(id="tooltip" ng-show="showNarrative") {{ nextNarrative }}
-   div(id="charCode" class="help-code" ng-click="toggleHelp()") {{toggleHelpText}}
+   div(id="charCode" class="help-code" ng-show="(toggleHelpText!=='Okay, I get it')" ng-click="toggleHelp()") {{toggleHelpText}} - ({{conceptCount}}) concepts to review
+   div(id="charCode" class="help-code darker-red-bg" ng-show="(toggleHelpText==='Okay, I get it')" ng-click="toggleHelp()") Okay I understand all ({{conceptCount}}) concepts
    div(id="charCode" class="stat--javascript" ng-hide="help") 
     div(class="title--javascript") Create your character using a JS Object!
     div(class="init-chartype stat--javascript") >> let 
@@ -22,9 +22,24 @@ div(id="main" class="charPage" ng-controller="charController")
       div(class="stat--javascript tab1" ng-repeat="attribute in attributes")     {{attribute['type']}}: {{attribute[chartype]}}
         span(ng-show="attribute[chartype]") ,
       div(class="stat--javascript tab1")     description: "{{charDescriptions[chartype]}}"
-      div(class="stat--javascript") }
+      div(class="stat--javascript last") }
+
+
    div(id="charCode" class="title--javascript" ng-show="help")
-    div(class="title--javascript") JavaScript Lesson: Creating an Object
+    div(class="title--javascript") JS Lesson 1: Creating an Object
+    div(class="description--javascript") 
+      span(class="push1") In this lesson we will declare a type variable
+      span(class="push1 green") myType
+      span(class="push1") using 
+      span(class="push1 red") let
+      span(class="push1") to store our character type selection.
+      span(class="push1") Then we create an object using
+      span(class="push1 red") Object.create() 
+      span(class="push1") on that type.
+      span(class="push1 red") console.log() 
+      span(class="push1") is used to make sure everything looks good!
+      
+    
     div(class="init-chartype comment--javascript charPage") // Declare a variable using "let"
     div(class="init-chartype stat--javascript") >> let 
       span(class="stat--javascript green") myType 
@@ -47,16 +62,17 @@ div(id="main" class="charPage" ng-controller="charController")
       span(class="comment--javascript tab1") // also derived
     div(class="stat--javascript last") }
     div(class="references")
-      div(class="references__title") References:
+      div(class="references__title") References on ({{conceptCount}}) Concepts:
       a(class="init-chartype link--javascript charPage" target="_blank" href="http://www.competa.com/blog/2016/08/es6-var-let-const-what-is-the-difference/" title="http://www.competa.com/blog/2016/08/es6-var-let-const-what-is-the-difference/") Var, Let, and Const
       a(class="init-chartype link--javascript charPage" target="_blank" href="https://msdn.microsoft.com/en-us/library/hh696634.aspx#Anchor_3" title="https://msdn.microsoft.com/en-us/library/hh696634.aspx#Anchor_3") Console.log()
       a(class="init-chartype link--javascript charPage" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" title="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create") Object.create()
 
-   div(class="char-select green-bg" ui-sref="stats" ng-show="chartype") Continue as 
+   div(class="char-select green-bg toggleable--medium" ui-sref="stats" ng-show="chartype") Continue as 
     span(class="") {{chartype}}
    div(id="charSelect")
      div(ng-repeat="char in characters" class="charBox" ng-click="charClick(char.type)" ng-class="(chartype === char.type) ? 'selected' : 'notselected'" )
       img(class="char char-char" ng-src="{{char.url}}")
+   div(class="charSelect__help tipForUser charSelectPage" ng-show="showTips") Choose from above ^ ^ ^
    div(id="gameNavTip" ng-show="showTips") Nav Menu
    div(id="gameNav")
      button(id="backNav" class="btn" ui-sref="home") 

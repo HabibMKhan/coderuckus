@@ -20,9 +20,13 @@ html
     body(ng-app="myApp")
         div(class="page-container" )
 
-            div(ui-view="header")
+            audio(id="cr-audio" src="../../img/music/oveheavensings.mp3" autoplay loop ng-if="headline !== '[CR] BATTLE at JS-Land!'")
+            div(ui-view="header" ng-click="(document.getElementById('cr-audio').pause)")
             .container.has-top-fixed-bar
                 .row.row-offcanvas.row-offcanvas-left
                     .col-xs-12.col-sm-12( ui-view="main")
                     div(ui-view="menu")
                     .col-xs-12.col-sm-9( ui-view="content")
+            a(id="conceptsCovered" href="../../img/docs/ConceptsCoveredinCodeRuckus.pdf" target="_blank") Concepts Covered
+            div(id="cr-pause" class="music-ctrl toggleable" onclick="document.getElementById('cr-audio').pause(); let e = document.getElementById('cr-pause').classList.add('selected'); document.getElementById('cr-play').classList.remove('selected');") Music Off
+            div(id="cr-play" class="music-ctrl selected toggleable" onclick="document.getElementById('cr-audio').play(); document.getElementById('cr-play').classList.add('selected'); document.getElementById('cr-pause').classList.remove('selected');") Music On

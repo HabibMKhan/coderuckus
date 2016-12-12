@@ -4,6 +4,7 @@
 
     function charController($scope, $stateParams) {
         $scope.start = function () {
+            $scope.conceptCount = 3;
             $scope.showNarrative = true;
             $scope.characters = [
               {type: "centaur", url: "../../img/characters/centaur.svg"},
@@ -32,37 +33,37 @@
             $scope.instruction = 'Click on the RED box to Select the character you want.';
             $scope.attributes = {
               'power': {
-                'centaur': 3,
+                'centaur': 2,
                 'elvenArcher': 2,
-                'dwarfWarrior': 4,
-                'blackMage': 4,
-                'viking': 3,
+                'dwarfWarrior': 1,
+                'blackMage': 3,
+                'viking': 1,
                 'wizard': 1,
                 'type': 'power'
               },
               'toughness': {
-                'centaur': 3,
-                'elvenArcher': 2,
-                'dwarfWarrior': 2,
+                'centaur': 2,
+                'elvenArcher': 1,
+                'dwarfWarrior': 3,
                 'blackMage': 1,
                 'viking': 2,
-                'wizard': 2,
+                'wizard': 1,
                 'type': 'toughness'
               },
               'accuracy': {
-                'centaur': 2,
+                'centaur': 1,
                 'elvenArcher': 3,
                 'dwarfWarrior': 1,
                 'blackMage': 1,
                 'viking': 2,
-                'wizard': 4,
+                'wizard': 2,
                 'type': 'accuracy'
               },
               'evasion': {
-                'centaur': 4,
-                'elvenArcher': 3,
-                'dwarfWarrior': 2,
-                'blackMage': 2,
+                'centaur': 1,
+                'elvenArcher': 1,
+                'dwarfWarrior': 1,
+                'blackMage': 1,
                 'viking': 2,
                 'wizard': 3,
                 'type': 'evasion'

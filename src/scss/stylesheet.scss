@@ -111,10 +111,17 @@ input, button {
 }
 
 .tipForUser {
-  position: fixed;
-  bottom: 7%;
   color: $cr-red;
   font-size: 40px;
+  &.charSelectPage {
+    position: fixed;
+    bottom: 7%;
+    right: 14%;
+  }
+  &.home {
+    position: fixed;
+    bottom: 7%;
+  }
   &.right {
     right: 18%;
   }
@@ -211,7 +218,7 @@ input, button {
   }
 }
 
-.inline {
+.inline, .inline-block {
   display: inline-block;
 }
 
@@ -219,11 +226,57 @@ input, button {
   font-family: Consolas,monaco,monospace;
   color: $cr-blue;
   font-size: 24px;
+}
+.description--javascript {
+  font-family: Consolas,monaco,monospace;
+  color: $cr-purple;
+  font-size: $fontsize-medium;
   margin-bottom: 10px;
 }
 
+.full-width {
+  width: 100%;
+}
+.required-notOk {
+  border: 2px solid $cr-bright-red;
+}
+.required-ok {
+  border: 2px solid $cr-green;
+}
+
+.underline {
+  text-decoration: underline;
+}
+.input--small {
+  width: 80px;
+}
+.input--medium {
+  width: 120px;
+}
+.input--large {
+  width: 250px;
+  padding: 3px 7px 0px 7px;
+}
+.fontsize-medium {
+  font-size: $fontsize-medium;
+}
+.fontsize-large {
+  font-size: $fontsize-large;
+}
+.marginT1 {
+  margin-top: 6px;
+}
+.marginT2 {
+  margin-top: 12px;
+}
+.marginL1 {
+  margin-left: 6px;
+}
 .tab1 {
   padding-left: 30px;
+}
+.tab2 {
+  padding-left: 60px;
 }
 .space1 {
   padding-left: 6px;
@@ -285,6 +338,12 @@ input, button {
 .bright-red {
   color: $cr-bright-red;
 }
+.darker-red-bg {
+  background-color: $cr-darker-red !important;
+}
+.dark-red-bg {
+  background-color: $cr-red !important;
+}
 .blue-bg {
   background-color: $cr-blue;
 }
@@ -301,6 +360,39 @@ input, button {
     background-color: $cr-selected-blue;
   }
 }
+.toggleable {
+  cursor: pointer;
+  box-shadow: 2px 2px 4px #555;
+  &.selected {
+    box-shadow: 1px 1px 4px #555;
+  }
+}
+.toggleable--light {
+  box-shadow: 3px 3px 5px #999;
+}
+.toggleable--medium {
+  box-shadow: 4px 4px 5px #999;
+}
+
+
+#instruction {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 20px;
+  background-color: $cr-orange;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 1%;
+  width: 40%;
+  box-shadow: 3px 3px 5px #999;
+}
+
+button {
+  border: none !important;
+}
+
 
 .help-code {
   color: white;
@@ -310,11 +402,39 @@ input, button {
   text-align: center;
   border-radius: 10px !important;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  box-shadow: 3px 3px 5px #999;
+}
+.charPage {
+  .help-code {
+    margin-bottom: 10px;
+  }
+  .references {
+    margin-top: -5px;
+  }
 }
 
-@media screen and (min-height: 960px) {
+@media screen and (max-width: 1280px) {
+  .tipForUser {
+    &.charSelectPage {
+      font-size: 32px;
+    }
+  }
+  .stat--javascript, .comment--javascript, .link--javascript, .description--javascript {
+    font-size: $fontsize-small;
+  }
+  .charPage {
+    .stat--javascript, .comment--javascript, .link--javascript {
+      font-size: $fontsize-xsmall;
+    }
+  }
+}
 
+@media screen and (min-width: 1281px) {
+
+  #instruction {
+    font-size: 28px;
+  }
   .stat--javascript, .comment--javascript, .link--javascript {
     font-size: 18px;
   }
@@ -351,4 +471,42 @@ input, button {
   color: grey;
   font-family: Consolas,monaco,monospace;
   margin-bottom: 10px;
+}
+
+
+#cr-pause, #cr-play {
+  position: fixed;
+  left: 0;
+  width:10%;
+  height:50px;
+  color: white;
+  text-align: center;
+  padding-top: 14px;
+  font-size: 16px;
+  background-color: $cr-unselected-blue;
+  &.selected {
+    background-color: $cr-selected-blue;
+  }
+}
+#cr-pause {
+  bottom: 0px;
+}
+#cr-play {
+  bottom: 50px;
+}
+#conceptsCovered {
+  position: fixed;
+  background-color: $cr-purple;
+  color: white;
+  width: 10%;
+  bottom: 34%;
+  height: 50px;
+  text-align: center;
+  padding: 12px;
+  font-size: 18px;
+  opacity: 0.3;
+  &:hover {
+    text-decoration: none;
+    opacity: 0.9;
+  }
 }

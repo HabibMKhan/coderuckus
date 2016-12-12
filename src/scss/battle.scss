@@ -1,10 +1,14 @@
+#main.battlePage {
+  margin-top: 170px;
+}
 .char.char--battle, .enemy.enemy--battle {
   margin: 20px;
   height: 40%;
-  margin-top: 20%;
+  margin-top: 15%;
   position: fixed;
   top: 0;
   width: 21%;
+  z-index: 20;
 }
 
 .enemy.enemy--battle {
@@ -58,15 +62,27 @@ progress[value] {
   height: 20px;
 }
 
+.hp-bar__enemy, .hp-bar__char {
+  font-size: 18px;
+}
+
 .hp-bar__enemy {
   position: fixed;
   margin-top: -50px;
   right: 150px;
+  & .enemy--name {
+    position: fixed;
+    right: 150px;
+    color: $cr-red;
+  }
 }
 
 .hp-bar__char {
   position: fixed;
   margin-top: -50px;
+  & .user--name {
+    color: $cr-green;
+  }
 }
 
 .hp-bar__enemy progress[value]::-webkit-progress-value {
@@ -109,4 +125,93 @@ progress[value]::-webkit-progress-bar {
 
 .return-village {
   font-size: 24px;
+}
+
+#battleBackground {
+  position: fixed;
+  opacity: 0.30;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#enemyPowAnimation, #powAnimation {
+  width: 20%;
+  height: 20%;
+  position: fixed;
+  opacity: 0;
+  z-index: 100;
+  top: 37%;
+}
+
+#enemyPowAnimation {
+  left: 18%;
+  top: 37%;
+  &.enemyAppear {
+    -webkit-animation-name: enemyAppear;
+    -webkit-animation-duration: 0.8s;
+    animation-name: enemyAppear;
+    animation-duration: 0.8s;
+  }
+}
+
+#powAnimation {
+  right: 100px;
+  &.appear {
+    -webkit-animation-name: appear;
+    -webkit-animation-duration: 0.8s;
+    animation-name: appear;
+    animation-duration: 0.8s;
+  }
+}
+
+@keyframes appear {
+  from {
+    right: 300px;
+    top: 37%;
+    opacity: 0;
+  }
+  to {
+    right: 100px;
+    top: 30%;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes appear {
+    from {
+      right: 300px;
+      top: 37%;
+      opacity: 0;
+    }
+    to {
+      right: 100px;
+      top: 30%;
+      opacity: 1;
+    }
+}
+
+@keyframes enemyAppear {
+  from {
+    left: 28%;
+    top: 37%;
+    opacity: 0;
+  }
+  to {
+    right: 15%;
+    top: 30%;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes enemyAppear {
+  from {
+    left: 28%;
+    top: 37%;
+    opacity: 0;
+  }
+  to {
+    right: 15%;
+    top: 30%;
+    opacity: 1;
+  }
 }
